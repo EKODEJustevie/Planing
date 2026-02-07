@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Emploi du Temps Hebdomadaire</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fefefe;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #eea 0%, #ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .day-section {
+            margin-bottom: 30px;
+            border: 2px solid #b2b2b2;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .day-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #b2b2b2 100%);
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .day-content {
+            padding: 20px;
+            background: #f8f9ff;
+        }
+
+        .time-block {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 15px;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: white;
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .time-block:hover {
+            background: #f0f4ff;
+            border-left-color: #b2b2b2;
+            transform: translateX(5px);
+        }
+
+        .time {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 0.95em;
+        }
+
+        .activity {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .notes-section {
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(253, 203, 110, 0.3);
+        }
+
+        .notes-section h2 {
+            color: #2d3436;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notes-section h2::before {
+            content: "📌";
+            font-size: 1.2em;
+        }
+
+        .note-category {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .note-category h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .note-category ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .note-category li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+
+        .note-category li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00b894;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .time-block {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 15px;
+            }
+        }
+
+        .period-divider {
+            border-top: 2px dashed #ddd;
+            margin: 15px 0;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Emploi du Temps Hebdomadaire</h1>
+            <p>Organisation et discipline</p>
+        </header>
+
+        <div class="content">
+            <!-- LUNDI -->
+            <div class="day-section">
+                <div class="day-header">LUNDI</div>
+                <div class="day-content">
+                    <div class="time-block">
+                        <div class="time">04h00 - 04h15</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">04h20 - 05h20</div>
+                        <div class="activity">Matériaux et métallurgie</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">05h25 - 06h00</div>
+                        <div class="activity">RDM et élasticité</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h00 - 06h30</div>
+                        <div class="activity">Cours de langues</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h30 - 06h55</div>
+                        <div class="activity">Jambes</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h57 - 07h10</div>
+                        <div class="activity">Déjeuner</div>
+                    </div>
+                    
+                    <div class="period-divider"></div>
+                    
+                    <div class="time-block">
+                        <div class="time">12h10 - 12h30</div>
+                        <div class="activity">Repas</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">12h35 - 13h25</div>
+                        <div class="activity">Activité 1</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">16h50 - 17h05</div>
+                        <div class="activity">Révision séances</div>
+                    </div>
+                    
+                    <div class="period-divider"></div>
+                    
+                    <div class="time-block">
+                        <div class="time">18h10 - 19h00</div>
+                        <div class="activity">Douche et repas</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">19h05 - 19h55</div>
+                        <div class="activity">Révisions et fermeture du téléphone</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">20h00 - 20h25</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MARDI -->
+            <div class="day-section">
+                <div class="day-header">MARDI</div>
+                <div class="day-content">
+                    <div class="time-block">
+                        <div class="time">04h00 - 04h15</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">04h20 - 05h20</div>
+                        <div class="activity">Informatique industrielle et systèmes embarqués</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">05h25 - 06h00</div>
+                        <div class="activity">Langues</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h00 - 06h30</div>
+                        <div class="activity">Cours de langues</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h30 - 06h55</div>
+                        <div class="activity">Bras</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h57 - 07h10</div>
+                        <div class="activity">Déjeuner</div>
+                    </div>
+                    
+                    <div class="period-divider"></div>
+                    
+                    <div class="time-block">
+                        <div class="time">12h10 - 12h30</div>
+                        <div class="activity">Repas</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">12h35 - 13h25</div>
+                        <div class="activity">Activité 1</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">16h50 - 17h05</div>
+                        <div class="activity">Révision séances</div>
+                    </div>
+                    
+                    <div class="period-divider"></div>
+                    
+                    <div class="time-block">
+                        <div class="time">18h10 - 19h00</div>
+                        <div class="activity">Douche et repas</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">19h05 - 19h55</div>
+                        <div class="activity">Révisions et fermeture du téléphone</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">20h00 - 20h25</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MERCREDI -->
+            <div class="day-section">
+                <div class="day-header">MERCREDI</div>
+                <div class="day-content">
+                    <div class="time-block">
+                        <div class="time">04h00 - 04h15</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">04h20 - 05h20</div>
+                        <div class="activity">Mathématique Appliquées</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">05h25 - 06h00</div>
+                        <div class="activity">Cours 2</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h00 - 06h30</div>
+                        <div class="activity">Cours de langues</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h30 - 06h55</div>
+                        <div class="activity">Postures & épaules</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h57 - 07h10</div>
+                        <div class="activity">Déjeuner</div>
+                    </div>
+                    
+                    <div class="period-divider"></div>
+                    
+                    <div class="time-block">
+                        <div class="time">12h10 - 12h30</div>
+                        <div class="activity">Repas</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">12h35 - 13h25</div>
+                        <div class="activity">Activité 1</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">16h50 - 17h05</div>
+                        <div class="activity">Révision séances</div>
+                    </div>
+                    
+                    <div class="period-divider"></div>
+                    
+                    <div class="time-block">
+                        <div class="time">18h10 - 19h00</div>
+                        <div class="activity">Douche et repas</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">19h05 - 19h55</div>
+                        <div class="activity">Révisions et fermeture du téléphone</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">20h00 - 20h25</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JEUDI -->
+            <div class="day-section">
+                <div class="day-header">JEUDI</div>
+                <div class="day-content">
+                    <div class="time-block">
+                        <div class="time">04h00 - 04h15</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">04h20 - 05h20</div>
+                        <div class="activity">Matériaux aéronautique et métallurgie</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">05h25 - 06h25</div>
+                        <div class="activity">Matématiques Appliqué</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h30 - 07h55</div>
+                        <div class="activity">Jambes, bras, abdos et déjeuner</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">07h57 - 08h25</div>
+                        <div class="activity">Cours de langue</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">08h30 - 09h30</div>
+                        <div class="activity">Projet 1</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">10h00 - 11h30</div>
+                        <div class="activity">Projet 2</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">11h45 - 13h30</div>
+                        <div class="activity">Dîner et sieste</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">14h00 - 15h30</div>
+                        <div class="activity">YouTube</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">15h45 - 17h15</div>
+                        <div class="activity">Certification</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">17h20 - 18h20</div>
+                        <div class="activity">Dîner + douche</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">18h20 - 19h30</div>
+                        <div class="activity">Automatique</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">19h30 - 20h00</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VENDREDI -->
+            <div class="day-section">
+                <div class="day-header">🎉 VENDREDI</div>
+                <div class="day-content">
+                    <div class="time-block">
+                        <div class="time">04h00 - 04h15</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">04h20 - 05h20</div>
+                        <div class="activity">Automatisme industriel et electrotechnique</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">05h25 - 06h00</div>
+                        <div class="activity">Professionalisation / matériaux </div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h00 - 06h30</div>
+                        <div class="activity">Cours de langues</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h30 - 06h55</div>
+                        <div class="activity">Dos</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h57 - 07h10</div>
+                        <div class="activity">Déjeuner</div>
+                    </div>
+                    
+                    <div class="period-divider"></div>
+                    
+                    <div class="time-block">
+                        <div class="time">12h10 - 12h30</div>
+                        <div class="activity">Repas</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">12h35 - 13h25</div>
+                        <div class="activity">Activité 1</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">13h30 - 15h00</div>
+                        <div class="activity">Activité 2</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">15h15 - 16h45</div>
+                        <div class="activity">RDM</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">16h50 - 17h05</div>
+                        <div class="activity">Révision séances</div>
+                    </div>
+                    
+                    <div class="period-divider"></div>
+                    
+                    <div class="time-block">
+                        <div class="time">18h10 - 19h00</div>
+                        <div class="activity">Douche et repas</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">19h05 - 19h55</div>
+                        <div class="activity">Révisions et fermeture du téléphone</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">20h00 - 20h25</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SAMEDI -->
+            <div class="day-section">
+                <div class="day-header">💪 SAMEDI</div>
+                <div class="day-content">
+                    <div class="time-block">
+                        <div class="time">04h00 - 04h15</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">04h20 - 05h20</div>
+                        <div class="activity">Matériaux et métallurgie</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">05h25 - 06h25</div>
+                        <div class="activity">Informatique industriel</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h30 - 07h30</div>
+                        <div class="activity">Mathématiques appliqué</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">07h35 - 07h55</div>
+                        <div class="activity">Full body</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">08h00 - 09h30</div>
+                        <div class="activity">Déjeuner, lessive, cours de langue et rangement</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">09h45 - 11h00</div>
+                        <div class="activity">Projet</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">11h05 - 12h00</div>
+                        <div class="activity">Apprentissage nouveau</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">12h05 - 13h30</div>
+                        <div class="activity">Dîner et sieste</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">14h00 - 15h30</div>
+                        <div class="activity">YouTube</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">15h45 - 17h15</div>
+                        <div class="activity">Certification</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">17h20 - 18h20</div>
+                        <div class="activity">Dîner + douche</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">18h20 - 19h30</div>
+                        <div class="activity">Temps libre</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">19h30 - 20h00</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIMANCHE -->
+            <div class="day-section">
+                <div class="day-header">🙏 DIMANCHE</div>
+                <div class="day-content">
+                    <div class="time-block">
+                        <div class="time">04h00 - 05h00</div>
+                        <div class="activity">RDM</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">05h00 - 06h00</div>
+                        <div class="activity">Lecture biblique et planification</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">06h00 - 07h45</div>
+                        <div class="activity">Marathon 10km</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">08h00 - 09h00</div>
+                        <div class="activity">Déjeuner et repassage</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">09h30 - 10h00</div>
+                        <div class="activity">Bilan de la semaine (finances, dépenses, activités) et planification</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">10h00 - 11h30</div>
+                        <div class="activity">Culte</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">12h00 - 13h30</div>
+                        <div class="activity">Dîner et sieste</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">13h45 - 14h30</div>
+                        <div class="activity">Art oratoire et vocabulaire</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">14h45 - 15h30</div>
+                        <div class="activity">Apprentissage et séances de chess</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">15h45 - 18h00</div>
+                        <div class="activity">Réseaux sociaux et Python challenge</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">18h10 - 19h00</div>
+                        <div class="activity">Douche et dîner</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">19h10 - 19h45</div>
+                        <div class="activity">Prière et méditation</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION NOTES -->
+            <div class="notes-section">
+                <h2>À ne pas oublier</h2>
+                
+                <div class="note-category">
+                    <h3>📚 Pour aller en cours</h3>
+                    <ul>
+                        <li>Gourde d'eau</li>
+                        <li>Mon goûter</li>
+                        <li>Mes mouchoirs</li>
+                        <li>Cocher le calendrier</li>
+                    </ul>
+                </div>
+
+                <div class="note-category">
+                    <h3>♟️ Programme de chess</h3>
+                    <ul>
+                        <li>Chaque dernier dimanche du mois : 5 matchs Chess.com</li>
+                    </ul>
+                </div>
+
+                <div class="note-category">
+                    <h3>📖 Ressources pour mes révisions</h3>
+                    <ul>
+                        <li>OpenClassrooms</li>
+                        <li>Coursera</li>
+                        <li>Chaînes YouTube</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
